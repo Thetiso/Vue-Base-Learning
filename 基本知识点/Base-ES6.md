@@ -12,3 +12,7 @@ methodA:({msg,data})=>{
 ## for of 与 for in
 - for of 查数组
 - for in 查对象
+
+
+## 获取毫秒数
+> 参考：https://blog.csdn.net/qq_35087256/article/details/79934016
