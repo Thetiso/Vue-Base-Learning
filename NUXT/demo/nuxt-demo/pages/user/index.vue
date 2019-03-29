@@ -16,11 +16,12 @@
             <h3>user name : {{userCached.user.nickname}}</h3>
             <h3>user gender : {{userCached.user.gender}}</h3>
         </div>
-
+        <userAvatar></userAvatar>
     </div>
 </template>
 <script>
     import {mapState} from 'vuex'
+    import userAvatar from '~/components/UserAvatar.vue';
     export default {
         asyncData: function ({ params, query, env, error }) {
             let gender = params.gender;
@@ -46,6 +47,9 @@
         mounted: function () {
             console.log(this.$store.state.user.user)
             console.log(this.userCached)
+        },
+        components: {
+            userAvatar
         }
     }
 </script>

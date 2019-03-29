@@ -24,15 +24,27 @@ module.exports = {
     */
     loading: {color: '#fff'},
 
-    /*
-    ** Global CSS
-    */
-    css: [],
-
-    /*
-    ** Plugins to load before mounting the App
-    */
-    plugins: [],
+    vender:[
+        'element-ui'
+    ],
+    babel:{
+        "plugins": [["component", [
+            {
+                "libraryName": "element-ui",
+                "styleLibraryName": "theme-default"
+            },
+            'transform-async-to-generator',
+            'transform-runtime'
+        ]]],
+        comments: true
+    },
+    plugins: [
+        { src: '~plugins/element-ui', ssr: true }
+    ],
+    css: [
+    // 全部引用的时候需要用到
+        'element-ui/lib/theme-chalk/index.css'
+    ],
 
     /*
     ** Nuxt.js modules

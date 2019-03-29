@@ -18,7 +18,9 @@
     },
     "dependencies": {
         "acorn": "^6.0.5",
+        "axios": "^0.18.0",
         "cross-env": "^5.2.0",
+        "element-ui": "^2.7.0",
         "micro": "^9.3.3",
         "micro-route": "^2.5.0",
         "nuxt": "^2.0.0",

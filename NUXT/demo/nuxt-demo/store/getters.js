@@ -3,6 +3,9 @@ const getters = {
         console.log(state, getters, getters['userModule/authed'])
         // console.log(state.userModule.authed)
         return getters['user/authed']
+    },
+    logined: (state, getters)=> {
+        return getters['user/isLogined']
     }
 }
 

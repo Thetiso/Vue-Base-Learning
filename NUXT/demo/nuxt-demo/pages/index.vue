@@ -1,111 +1,29 @@
 <template>
     <section class="container">
+        <commonHeader></commonHeader>
+        <commonSearch></commonSearch>
         <div>
-            <logo/>
-            <h1 class="title">
-                nuxt-demo
-            </h1>
-            <h2 class="subtitle">
-                nuxt demo for learning
-            </h2>
-            <div class="links">
-                <a
-                    href="https://nuxtjs.org/"
-                    target="_blank"
-                    class="button--green">Documentation</a>
-                <a
-                    href="https://github.com/nuxt/nuxt.js"
-                    target="_blank"
-                    class="button--grey">GitHub</a>
-            </div>
-            <h1>
-                <nuxt-link to="/about">About</nuxt-link>
-            </h1>
-            <h1>
-                <nuxt-link :to="{name: 'user', params: {nickname: 'James', gender: '1'}}">General User Page with post Params</nuxt-link>
-            </h1>
-            <h1>
-                <nuxt-link :to="{name: 'user', query: {nickname: 'James', gender: '1'}}">General User Page With Url Query</nuxt-link>
-            </h1>
-            <h1>
-                <nuxt-link to="/user/123">Page For User (id = 123)</nuxt-link>
-            </h1>
-            <h2 @click="increment">{{$store.state.counter}}</h2>
-            <h2>count:{{count}}</h2>
-            <h2 @click="incrementAsync2">incrementAsync: {{countAlias}}</h2>
-            <h2 @click="autoIncrement">incrementAsync after timer: {{countAlias}}</h2>
+            index.html
         </div>
+        <commonFooter></commonFooter>
     </section>
 </template>
 
 <script>
-    import Logo from '~/components/Logo.vue';
-    import {mapState,mapActions} from 'vuex';
-
+    import commonFooter from '~/components/common/footer.vue'
+    import commonHeader from '~/components/common/header.vue'
+    import commonSearch from '~/components/common/search.vue'
     export default {
-        /*
-            fetch
-            异步请求数据
-            返回数据不用于填充页面，而是用于更新状态树
-         */
-        fetch: function({store}) {
-            // store.commit('increment');
-            // console.log(process)
-            console.log(Date.now() + '=====fetch====')
-            store.commit('user/login')
-        },
-        /*
-            asyncDate
-            1. 异步请求数据
-                返回数据用于填充页面
-            2. 查询状态数的数据
-         */
-        asyncData: function({store}) {
-            console.log(Date.now() + '====async=====')
-            console.log(store.state)
-            return {
-                user: store.state.user.user
-            }
-        },
-        computed: mapState({
-            count: state => state.counter,
-            countAlias: 'counter',
-        }),
-        // computed: mapState([
-        //     'counter'
-        //     ]
-        // ),
+        name: "index",
         components: {
-            Logo
-        },
-        methods: {
-            increment: function() {
-                this.$store.commit('increment')
-            },
-            ...mapActions([
-                'incrementAsync2'
-            ]),
-            ...mapActions({
-                autoIncrement: 'incrementAsync'
-            })
-        },
-        middleware: 'authCheck',
-        mounted: function () {
-            console.log(Date.now() + 'mounted!')
-            // let user = sessionStorage.getItem('user');
-            console.log(this.user)
-        },
-        beforeMount: function() {
-            console.log(Date.now() + 'before mounted!')
+            commonFooter,
+            commonHeader,
+            commonSearch,
         }
-    };
+    }
 </script>
-<noscript>
-    服务端执行顺序：middleware > asyncData > fetch,所以这几个方法无法调用sessionStorage
-    客服端执行顺序：mounted
-</noscript>
-<style>
 
+<style scoped>
     .container {
         min-height: 100vh;
         display: flex;

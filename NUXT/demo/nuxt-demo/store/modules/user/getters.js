@@ -8,7 +8,10 @@ const  getters = {
             authed = true;
         }
         return authed;
-    }
+    },
+    isLogined: (state)=> {
+        return !!state.user
+    },
 }
 export default getters
 //
